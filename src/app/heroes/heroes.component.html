@@ -3,5 +3,6 @@
 <p>
   ID: {{hero.id}},
   <br>
-  Name: {{hero.name}}
+  <label for="name">Name: {{hero.name}}</label>
 </p>
+<input id="name" placeholder="name" [(ngModel)]="hero.name">
