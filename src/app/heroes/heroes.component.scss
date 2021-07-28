@@ -24,5 +24,12 @@ h2 {
         color: white;
 
         background-color: darkgray;
+
+        &.selected {
+            background-color: blue;
+        }
     }
+
+
 }
+
