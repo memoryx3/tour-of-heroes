@@ -1,0 +1,28 @@
+h2 {
+    color: darkgray;
+    text-align: center;
+}
+
+.heroes {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    list-style: none;
+
+    li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 400px;
+        height: 100px;
+
+        margin-top: 25px;
+
+        color: white;
+
+        background-color: darkgray;
+    }
+}
