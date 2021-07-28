@@ -9,6 +9,7 @@
   <p>
     ID: {{selectedHero.id}}
     <br>
-    Name: {{selectedHero.name}}
+    <label for="name">Hero name:</label>
+    <input type="text" [(ngModel)]="selectedHero.name" [placeholder]="selectedHero.name">
   </p>
 </div>
