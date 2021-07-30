@@ -10,7 +10,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class HeroService {
 
-  private heroesUrl = 'api/heroes'; 
+  private heroesUrl = 'api/heroes';
 
   constructor(
     private messageService: MessageService,
@@ -26,9 +26,12 @@ export class HeroService {
   }
 
   getHero(id: number): Observable<Hero> {
-    const hero = HEROES.find(h => h.id === id)!;
-    this.messageService.add(`HeroService: fetched hero id=${id}`);
-    return of(hero)
+    const heroUrl = `${this.heroesUrl}/${id}`;
+    return this.http.get<Hero>(heroUrl)
+      .pipe(
+        tap(_ => this.log(`fetched hero id = ${id}`)),
+        catchError(this.handleError<Hero>(`getHero id=${id}`))
+      )
   }
 
   private log(message: string) {
@@ -38,12 +41,12 @@ export class HeroService {
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
-  
+
       this.log(`${operation} failed: ${error.message}`);
 
       return of(result as T);
     };
   }
 
-  
+
 }
